@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>TechXposium 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+    html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:url("bg.jpg") no-repeat center center fixed;
+background-size:cover;
+color:white;
+overflow-x:hidden;
+}
+
+/* Dark Overlay */
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.65);
+z-index:-1;
+}
+
+/* Particle Canvas */
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-2;
+}
+
+/* Lightning Effect */
+.lightning{
+position:fixed;
+width:100%;
+height:100%;
+background:radial-gradient(circle,rgba(0,255,255,0.15),transparent 70%);
+animation:flash 6s infinite;
+z-index:-1;
+}
+@keyframes flash{
+0%,95%,100%{opacity:0;}
+96%{opacity:1;}
+97%{opacity:0.5;}
+98%{opacity:1;}
+}
+
+/* Top Header */
+.top-bar{
+text-align:center;
+padding:10px;
+letter-spacing:4px;
+color:#ff3333;
+font-size:28px;
+}
+
+/* Navbar */
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+}
+@media (max-width:768px){
+
+    nav{
+        padding:15px 20px;   /* mobile ke liye small padding */
+    }
+
+    nav ul{
+        gap:15px;
+        font-size:14px;
+    }
+
+    .tech, .posium{
+        font-size:45px;
+    }
+
+    .x{
+        font-size:55px;
+    }
+
+    .year{
+        font-size:50px;
+    }
+
+    .about-card p{
+        font-size:16px;
+    }
+
+}
+.logo{
+color:#00ffff;
+font-size:30px;
+font-weight:900;
+}
+nav ul{
+display:flex;
+gap:40px;
+list-style:none;
+}
+nav ul li a{
+text-decoration:none;
+color:white;
+transition:0.3s;
+}
+nav ul li a:hover{
+color:#00ffff;
+}
+
+/* Hero */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+
+}
+.hero h2{
+font-size:90px;
+letter-spacing:6px;
+}
+.year{
+font-size:150px;
+color:#00ffff;
+text-shadow:0 0 30px #00ffff,0 0 60px #00ffff,0 0 120px #00ffff;
+}
+.tagline{
+color:#ff3333;
+margin-top:15px;
+letter-spacing:4px;
+}
+.mission{
+margin-top:25px;
+opacity:0.7;
+letter-spacing:3px;
+}
+
+/* Countdown */
+.countdown{
+display:flex;
+gap:60px;
+margin-top:30px;
+}
+.time-box span{
+font-size:60px;
+}
+.time-box small{
+font-size:14px;
+letter-spacing:2px;
+opacity:0.7;
+}
+
+/* Robot */
+.robot{
+position:fixed;
+bottom:40px;
+left:-150px;
+width:120px;
+animation:moveRobot 14s linear infinite;
+}
+@keyframes moveRobot{
+0%{left:-150px;transform:scaleX(1);}
+50%{left:100%;transform:scaleX(1);}
+51%{transform:scaleX(-1);}
+100%{left:-150px;transform:scaleX(-1);}
+}
+.robot-head{
+width:90px;
+height:65px;
+background:linear-gradient(145deg,#fff,#ccc);
+border-radius:20px;
+position:relative;
+margin:auto;
+}
+.eye{
+width:14px;
+height:14px;
+background:#00ffff;
+border-radius:50%;
+position:absolute;
+top:26px;
+animation:blink 4s infinite;
+}
+.eye.left{left:22px;}
+.eye.right{right:22px;}
+@keyframes blink{
+0%,90%,100%{height:14px;}
+95%{height:2px;}
+}
+.robot-body{
+width:90px;
+height:110px;
+background:linear-gradient(145deg,#ff3333,#990000);
+border-radius:20px;
+margin:auto;
+margin-top:5px;
+position:relative;
+}
+.leg{
+width:10px;
+height:40px;
+background:white;
+position:absolute;
+bottom:-40px;
+}
+.leg.left{left:25px;animation:legMove .6s infinite alternate;}
+.leg.right{right:25px;animation:legMove .6s infinite alternate-reverse;}
+@keyframes legMove{
+from{transform:rotate(20deg);}
+to{transform:rotate(-20deg);}
+}
+
+/* ABOUT SECTION */
+.about-section{
+padding:100px 10%;
+background:#070b15;
+text-align:center;
+}
+.small-title{
+color:#ff3c3c;
+letter-spacing:3px;
+font-size:2px;
+}
+.main-title{
+font-size:50px;
+margin-bottom:50px;
+}
+.main-title span{
+color:#00ffff;
+text-shadow:0 0 20px #00ffff;
+}
+.about-card{
+background:#0f1625;
+border:1px solid rgba(0,255,255,0.2);
+padding:30px;
+margin-bottom:30px;
+border-radius:10px;
+box-shadow:0 0 20px rgba(0,255,255,0.1);
+text-align:left;
+}
+.card-title{
+margin-bottom:15px;
+font-size:23px;
+letter-spacing:5px;
+
+}
+.card-title.red{color:#ff3c3c;}
+.card-title.cyan{color:#00ffff;}
+.about-card p{
+font-size:35px;
+line-height:1.8;
+color:#cfcfcf;
+}
+.stats{
+display:flex;
+justify-content:space-between;
+margin-top:50px;
+flex-wrap:wrap;
+}
+.stat-box{
+flex:1;
+margin:15px;
+padding:30px;
+background:#0f1625;
+border:1px solid #00ffff;
+border-radius:10px;
+text-align:center;
+box-shadow:0 0 20px rgba(0,255,255,0.4);
+transition:0.3s;
+}
+.stat-box:hover{
+transform:translateY(-10px);
+box-shadow:0 0 40px #00ffff;
+}
+.stat-box h2{
+font-size:40px;
+color:#00ffff;
+}
+.stat-box p{
+margin-top:10px;
+font-size:14px;
+letter-spacing:2px;
+}
+/* EVENTS SECTION */
+.events-section{
+padding:100px 10%;
+background:#050912;
+text-align:center;
+}
+
+.events-title{
+font-size:50px;
+margin-bottom:50px;
+}
+
+.events-title span{
+color:#00ffff;
+text-shadow:0 0 20px #00ffff;
+}
+
+.events-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.event-box{
+background:#0f1625;
+border:1px solid rgba(0,255,255,0.2);
+padding:25px;
+border-radius:10px;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 0 15px rgba(0,255,255,0.1);
+}
+
+.event-box:hover{
+transform:translateY(-8px);
+box-shadow:0 0 30px #00ffff;
+}
+
+.event-box h3{
+font-size:18px;
+letter-spacing:2px;
+color:#ffffff;
+}
+
+/* Event Detail Popup */
+.event-detail{
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:80%;
+max-width:800px;
+background:#0f1625;
+padding:40px;
+border-radius:10px;
+box-shadow:0 0 40px #00ffff;
+z-index:999;
+text-align:left;
+}
+
+.event-detail h2{
+color:#00ffff;
+margin-bottom:15px;
+}
+
+.event-detail p{
+color:#cfcfcf;
+line-height:1.7;
+}
+
+.close-btn{
+margin-top:20px;
+padding:8px 20px;
+background:#ff3333;
+border:none;
+color:white;
+cursor:pointer;
+}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron',sans-serif;
+}
+
+body{
+background:linear-gradient(to bottom,#03060f,#071c2f);
+color:white;
+}
+
+.events-section{
+padding:80px 8%;
+text-align:center;
+}
+
+.section-title{
+font-size:60px;
+color:#00ffff;
+margin-bottom:60px;
+text-shadow:0 0 20px #00ffff;
+}
+
+.events-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.event-card{
+position:relative;
+border-radius:12px;
+overflow:hidden;
+cursor:pointer;
+transition:0.4s;
+box-shadow:0 0 20px rgba(0,255,255,0.2);
+}
+
+.event-card img{
+width:100%;
+height:220px;
+object-fit:cover;
+transition:0.4s;
+}
+
+.event-card h3{
+position:absolute;
+bottom:0;
+width:100%;
+padding:15px;
+background:linear-gradient(to top,rgba(0,0,0,0.9),transparent);
+color:#00ffff;
+font-size:16px;
+letter-spacing:2px;
+}
+
+.event-card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 40px #00ffff;
+}
+
+.event-card:hover img{
+transform:scale(1.1);
+}
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.85);
+justify-content:center;
+align-items:center;
+z-index:1000;
+}
+
+.modal-content{
+background:#0f1625;
+width:90%;
+max-width:650px;
+padding:40px;
+border-radius:15px;
+box-shadow:0 0 40px #00ffff;
+position:relative;
+}
+
+.modal-content h2{
+color:#00ffff;
+margin-bottom:20px;
+}
+
+.modal-content p{
+line-height:1.7;
+color:#ccc;
+}
+
+.close{
+position:absolute;
+top:15px;
+right:20px;
+font-size:30px;
+cursor:pointer;
+color:#ff3c3c;
+}
+/* Reset + font */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Arial',sans-serif;
+}
+
+body{
+  background:linear-gradient(to bottom,#03060f,#071c2f);
+  color:white;
+  overflow-x:hidden;
+}
+
+/* Section Title */
+.section-title{
+  text-align:center;
+  font-size:50px;
+  color:#00ffff;
+  margin:50px 0 40px;
+  text-shadow:0 0 20px #00ffff;
+}
+
+/* Schedule Section */
+.days-container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:20px;
+  padding:0 5%;
+  margin-bottom:100px;
+}
+
+.day-card{
+  background:#0f1625;
+  border:2px solid #00ffff;
+  border-radius:15px;
+  padding:20px;
+  box-shadow:0 0 20px #00ffff;
+  transition:0.3s;
+}
+
+.day-card h2{
+  text-align:center;
+  margin-bottom:15px;
+  font-size:20px;
+  color:#ff3333;
+}
+
+.day-card .event-card{
+  background:#0a0f20;
+  margin:10px 0;
+  padding:10px 12px;
+  border-left:4px solid #00ffff;
+  cursor:pointer;
+  transition:0.3s;
+  border-radius:8px;
+}
+
+.day-card .event-card:hover{
+  transform:scale(1.05);
+  background:#001f33;
+  box-shadow:0 0 10px #00ffff;
+}
+
+/* Modal Popup */
+.modal{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  justify-content:center;
+  align-items:center;
+  z-index:1000;
+}
+
+.modal-content{
+  background:#0f1625;
+  width:90%;
+  max-width:650px;
+  padding:40px;
+  border-radius:15px;
+  box-shadow:0 0 40px #00ffff;
+  position:relative;
+}
+
+.modal-content h2{
+  color:#00ffff;
+  margin-bottom:20px;
+}
+
+.modal-content p{
+  line-height:1.7;
+  color:#ccc;
+}
+
+.close{
+  position:absolute;
+  top:15px;
+  right:20px;
+  font-size:30px;
+  cursor:pointer;
+  color:#ff3333;
+}
+.days-container {
+  display: grid;
+  /* This creates 3 equal columns that will automatically resize */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 30px;
+  padding: 0 5%;
+  margin-bottom: 100px;
+  align-items: start; /* Keeps the cards at their natural height */
+}
+
+/* Container & Section Styling */
+.tx-prizes-section {
+    padding: 80px 20px;
+    background: url('background.jpg') no-repeat center center/cover;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Optional animated particle overlay */
+.tx-prizes-section::before {
+    content: "";
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.5);
+    z-index:1;
+}
+
+/* Container relative for content above overlay */
+.tx-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Main Title */
+.tx-main-title {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #FFD700; /* Golden text */
+}
+
+.tx-title-underline {
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(to right, #FF4500, #FFD700);
+    margin: 0 auto 50px auto;
+    border-radius: 2px;
+}
+
+/* Hero Prize Card */
+.tx-hero-prize-card {
+    background: rgba(0,0,0,0.6);
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 50px;
+    box-shadow: 0 0 30px #FF4500, 0 0 60px #FFD700;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.tx-hero-prize-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 50px #FF6347, 0 0 100px #FFD700;
+}
+
+.tx-prize-amount {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+    color: #FF4500;
+}
+
+.tx-prize-desc {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+/* Prize Grid */
+.tx-prize-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.tx-card {
+    background: rgba(0,0,0,0.6);
+    padding: 30px 20px;
+    border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 20px #FF4500, 0 0 40px #FFD700;
+}
+
+.tx-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 0 50px #FF6347, 0 0 100px #FFD700;
+}
+
+.tx-icon-box {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #FFD700, 0 0 20px #FF4500; }
+    to { text-shadow: 0 0 20px #FFD700, 0 0 40px #FF6347; }
+}
+
+.tx-card h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #FFD700;
+}
+
+.tx-card p {
+    font-size: 1rem;
+    color: #fff;
+}
+
+/* Entry Fee Box */
+.tx-entry-fee-box {
+    background: rgba(255, 69, 0, 0.7);
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 50px;
+    display: inline-block;
+}
+
+.tx-label {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.tx-price-tag {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #FFD700;
+}
+
+/* Action Button */
+.tx-action-area .tx-btn-register {
+    background: linear-gradient(90deg, #FF4500, #FFD700);
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 15px 40px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tx-action-area .tx-btn-register:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 0 20px #FF6347, 0 0 50px #FFD700;
+}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'arial'Arial, Helvetica, sans-serif;
+}
+
+body{
+background: radial-gradient(circle at center, #1a1a2e, #0f0f1a);
+color:white;
+overflow-x:hidden;
+}
+
+/* SECTION */
+.contact-section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px 20px;
+}
+
+/* TITLE */
+.main-title{
+font-size:3.5rem;
+color:#00f7ff;
+text-shadow:0 0 20px #00f7ff;
+margin-bottom:15px;
+animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 10px #00f7ff; }
+to{ text-shadow:0 0 30px #00f7ff, 0 0 50px #00f7ff; }
+}
+
+.subtitle{
+color:#ccc;
+margin-bottom:50px;
+font-size:1.1rem;
+}
+
+/* CARDS GRID */
+.cards-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+width:100%;
+max-width:1100px;
+}
+
+/* CARD STYLE */
+.card{
+background:linear-gradient(135deg, rgba(0,255,255,0.1), rgba(255,0,255,0.1));
+border:1px solid rgba(255,255,255,0.2);
+padding:30px 20px;
+border-radius:20px;
+backdrop-filter:blur(15px);
+transition:0.4s;
+position:relative;
+overflow:hidden;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.05);
+box-shadow:0 0 25px #00f7ff;
+}
+
+/* ICON */
+.icon{
+font-size:2.5rem;
+margin-bottom:15px;
+}
+
+/* CARD TEXT */
+.card h2{
+margin-bottom:15px;
+color:#00f7ff;
+}
+
+.card p{
+margin-bottom:8px;
+color:#eee;
+font-size:0.95rem;
+}
+
+.card a{
+display:block;
+color:#fff;
+text-decoration:none;
+margin-bottom:8px;
+transition:0.3s;
+}
+
+.card a:hover{
+color:#00f7ff;
+text-shadow:0 0 10px #00f7ff;
+}
+
+/* Animated Background Particles */
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+background:radial-gradient(circle, rgba(0,255,255,0.1) 1px, transparent 1px);
+background-size:40px 40px;
+animation:moveBg 20s linear infinite;
+z-index:-1;
+}
+
+@keyframes moveBg{
+from{transform:translate(0,0);}
+to{transform:translate(-200px,-200px);}
+}
+
+.tx-btn-register{
+    position:relative;
+    padding:18px 55px;
+    font-size:1.2rem;
+    font-weight:800;
+    color:#fff;
+    background:linear-gradient(145deg,#001f33,#003a5f);
+    border:none;
+    border-radius:60px;
+    cursor:pointer;
+    letter-spacing:2px;
+    transition:0.4s ease;
+    transform-style:preserve-3d;
+    perspective:1000px;
+    
+    /* 3D Depth Shadow */
+    box-shadow:
+        0 10px 20px rgba(0,0,0,0.5),
+        0 0 20px #00ffff,
+        inset 0 0 10px #00ffff;
+}
+
+/* Floating Animation */
+@keyframes float{
+    0%{ transform:translateY(0px); }
+    50%{ transform:translateY(-10px); }
+    100%{ transform:translateY(0px); }
+}
+
+.tx-btn-register{
+    animation:float 3s ease-in-out infinite;
+}
+
+/* Electric Glow Border */
+.tx-btn-register::before{
+    content:"";
+    position:absolute;
+    inset:-3px;
+    border-radius:60px;
+    background:linear-gradient(90deg,#00ffff,#00aaff,#00ffff);
+    z-index:-1;
+    filter:blur(10px);
+    opacity:0.8;
+}
+
+/* Hover = Lift + Rotate Slight */
+.tx-btn-register:hover{
+    transform:translateY(-12px) rotateX(10deg) rotateY(-10deg) scale(1.08);
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.7),
+        0 0 40px #00ffff,
+        0 0 80px #00ffff;
+}
+
+/* Click Press Effect */
+.tx-btn-register:active{
+    transform:translateY(2px) scale(0.95);
+}
+body{
+    background:#000;
+}
+
+.hero-title{
+    text-align:center;
+    font-family:'Anton', sans-serif;
+    letter-spacing:6px;
+    margin-top:80px;
+}
+
+/* TECH + POSIUM White Glow */
+.tech, .posium{
+    font-size:110px;
+    color:#ffffff;
+    text-shadow:
+        0 0 10px #ffffff,
+        0 0 20px #ffffff,
+        0 0 40px #ffffff,
+        0 0 80px #ffffff;
+}
+
+/* Red X */
+.x{
+    font-size:140px;
+    color:#ff1e1e;
+    margin:0 15px;
+    text-shadow:
+        0 0 10px #ff0000,
+        0 0 30px #ff0000,
+        0 0 60px #ff0000;
+}
+
+/* 26 Red */
+.year{
+    font-size:120px;
+    color:#ff1e1e;
+    margin-left:15px;
+    text-shadow:
+        0 0 10px #ff0000,
+        0 0 25px #ff0000,
+        0 0 50px #ff0000;
+}
+@media (max-width:768px){
+
+    .hero{
+        padding: 0 15px;
+    }
+
+    .hero-title{
+        margin-top:100px;
+        line-height:1.2;
+    }
+
+    .tech, .posium{
+        font-size:38px;
+    }
+
+    .x{
+        font-size:45px;
+    }
+
+    .year{
+        font-size:45px;
+    }
+
+    .countdown{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .time-box span{
+        font-size:30px;
+    }
+
+    .robot{
+        display:none; /* mobile me robot hide kar do */
+    }
+
+    video{
+        height:100%;
+        width:100%;
+    }
+
+}
+.hero img{
+    max-width:90%;
+    height:auto;
+}
+</style>
+</style>
+</head>
+<body>
+
+
+
+
+<div class="lightning"></div>
+
+<div class="top-bar">◆ SUPAUL COLLEGE OF ENGINEERING ◆</div>
+
+<nav>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#schedule">Schedule</a></li>
+
+<li><a href="#contact">Contact</a></li>
+<li><a href="#events">Events</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+<h1> <img src="logo (1).png" alt="TechXposium Logo"></h1>
+
+<div class="hero-title">
+    <span class="tech">TECH</span>
+    <span class="x">X</span>
+    <span class="posium">POSIUM’</span>
+    <span class="year">26</span>
+</div>
+<div class="tagline">THE ANNUAL TECHFEST OF SCE SUPAUL</div>
+<div class="mission">MISSION COUNTDOWN ACTIVE</div>
+<video src="bg.mp4" autoplay muted loop style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1;opacity:0.3;"></video>
+
+<div class="countdown">
+<div class="time-box"><span id="days">00</span><br><small>DAYS</small></div>
+<div class="time-box"><span id="hours">00</span><br><small>HOURS</small></div>
+<div class="time-box"><span id="minutes">00</span><br><small>MIN</small></div>
+<div class="time-box"><span id="seconds">00</span><br><small>SEC</small></div>
+</div>
+</section>
+
+<!-- ROBOT -->
+<div class="robot">
+<div class="robot-head">
+<div class="eye left"></div>
+<div class="eye right"></div>
+</div>
+<div class="robot-body">
+<div class="left right"></div>
+<div class="left right"></div>
+</div>
+</div>
+
+<!-- ABOUT SECTION -->
+<section class="about-section" id="about">
+<h4 class="small-title">KNOW US BETTER</h4>
+<h1 class="main-title">ABOUT <span>US</span></h1>
+
+<div class="about-card">
+<h3 class="card-title red">ABOUT SCE</h3>
+<p>Supaul College of Engineering, located in Bihar, established in 2017, is a public institute approved by AICTE. It provides 7 UG and PG courses in 6 specialisations including Civil Engineering, Computer Science Engineering, Electrical Engineering, Electronics & Communication Engineering and Mechanical Engineering</p>
+</div>
+
+<div class="about-card">
+<h3 class="card-title cyan">ABOUT TECHXPOSIUM</h3>
+<p>TechXposium is the flagship technical fest of SCE Supaul, organized by the Technical Club under the guidance of faculty advisors. The fest brings together students, professionals and innovators to celebrate technology, learning and collaboration.
+
+ competitions and creativity together for 3 exciting days.</p>
+</div>
+
+<div class="stats">
+<div class="stat-box"><h2>360+</h2><p>Participants</p></div>
+<div class="stat-box"><h2>6</h2><p>Departments</p></div>
+<div class="stat-box"><h2>18</h2><p>Events</p></div>
+<div class="stat-box"><h2>3</h2><p>Days</p></div>
+</div>
+</section>
+<!-- EVENTS SECTION -->
+<section class="events-section" id="events">
+<h1 class="section-title">ALL 18 EVENTS</h1>
+
+<div class="events-grid">
+
+<div class="event-card" onclick="openModal(0)">
+<img src="webathon.jpg">
+<h3>Webathon</h3>
+</div>
+
+<div class="event-card" onclick="openModal(1)">
+<img src="cad.jpg">
+<h3>cad designing</h3>
+</div>
+
+<div class="event-card" onclick="openModal(2)">
+<img src="app .png">
+<h3>Mobile App Development</h3>
+</div>
+
+<div class="event-card" onclick="openModal(3)">
+<img src="bridge.jpg">
+<h3>Bridge Designing</h3>
+</div>
+
+<div class="event-card" onclick="openModal(4)">
+<img src="poster.jpg">
+<h3>Poster Design</h3>
+</div>
+
+<div class="event-card" onclick="openModal(5)">
+<img src="startup.jpg">
+<h3>Startup Idea</h3>
+</div>
+
+<div class="event-card" onclick="openModal(6)">
+<img src="robo fight.jpg">
+<h3>Robo War</h3>
+</div>
+
+<div class="event-card" onclick="openModal(7)">
+<img src="robo race.jpg">
+<h3>Robo Race</h3>
+</div>
+
+<div class="event-card" onclick="openModal(8)">
+<img src="robo soccer.jpg">
+<h3>Robo Soccer</h3>
+</div>
+
+<div class="event-card" onclick="openModal(9)">
+<img src="obstacle .jpg">
+<h3>obstacle avoiding robo</h3>
+</div>
+
+<div class="event-card" onclick="openModal(10)">
+<img src="line.png">
+<h3>Line Follower Robo</h3>
+</div>
+
+<div class="event-card" onclick="openModal(11)">
+<img src="smart automation.jpg">
+<h3>Smart automation</h3>
+</div>
+
+<div class="event-card" onclick="openModal(12)">
+<img src="drone .jpg">
+<h3>Drone Race</h3>
+</div>
+
+<div class="event-card" onclick="openModal(13)">
+<img src="technical quiz.jpg">
+<h3>Technical Quiz</h3>
+</div>
+
+<div class="event-card" onclick="openModal(14)">
+<img src="matlab.jpg">
+<h3>MATLAB Competition</h3>
+</div>
+
+<div class="event-card" onclick="openModal(15)">
+<img src="ckt.jpg">
+<h3>Circuit Design</h3>
+</div>
+
+<div class="event-card" onclick="openModal(16)">
+<img src="coding.jpg">
+<h3>Coding Contest</h3>
+</div>
+
+<div class="event-card" onclick="openModal(17)">
+<img src="esports.jpg">
+<h3>E-Sports</h3>
+</div>
+
+</div>
+</section>
+
+<section class="schedule-section" id="schedule">
+  <h1 class="section-title">TechXposium 2026 - Schedule</h1>
+  <div class="days-container">
+
+    <!-- Day 1 -->
+    <div class="day-card">
+      <h2>Day 1 - March 14</h2>
+      <div class="event-card" onclick="openModal(0)">10:00 AM - webathon</div>
+      <div class="event-card" onclick="openModal(1)">11:00 AM-  Cad designing</div>
+      <div class="event-card" onclick="openModal(2)">02:00 PM - App Development</div>
+      <div class="event-card" onclick="openModal(3)">02:00 PM - bridge Design</div>
+         <div class="event-card" onclick="openModal(4)">05:00 PM - poster Design</div>
+            <div class="event-card" onclick="openModal(5)">03:00 PM - startup idea </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="day-card">
+      <h2>Day 2 - March 15</h2>
+      <div class="event-card" onclick="openModal(6)">10:00 AM - Robo war</div>
+      <div class="event-card" onclick="openModal(7)">11:00 AM - car racing</div>
+      <div class="event-card" onclick="openModal(8)">12:00 PM - Robo soccer</div>
+      <div class="event-card" onclick="openModal(9)">02:00 PM - obstacle avoiding robo</div>
+         <div class="event-card" onclick="openModal(10)">03:00 PM - line follower </div>
+            <div class="event-card" onclick="openModal(11)">05:00 PM - smart automation</div>
+               <div class="event-card" onclick="openModal(12)">04:00 PM - drone race</div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="day-card">
+      <h2>Day 3 - March 16</h2>
+      <div class="event-card" onclick="openModal(13)">10:00 AM - Technical Quiz</div>
+      <div class="event-card" onclick="openModal(14)">11:00 PM - Matlab</div>
+      <div class="event-card" onclick="openModal(15)">02:00 PM - Circuit Design</div>
+         <div class="event-card" onclick="openModal(16)">03:00 PM - code context</div>
+      <div class="event-card" onclick="openModal(17)">04:00 PM - E-Sports</div>
+         <div class="event-card" onclick="openModal(18)">02:00 PM - cultural event and prize distribution</div>
+    </div>
+
+  
+</section>
+
+<section class="tx-prizes-section">
+    <div class="tx-container">
+        <h2 class="tx-main-title">PRIZES & RECOGNITION</h2>
+        <div class="tx-title-underline"></div>
+
+        <div class="tx-hero-prize-card">
+            <h3 class="tx-prize-amount">₹ 1 Lakh+</h3>
+            <p class="tx-prize-desc">Worth of cash prizes, goodies & certificates to be won</p>
+        </div>
+
+        <div class="tx-prize-grid">
+            <div class="tx-card">
+                <div class="tx-icon-box">🏆</div>
+                <h4>Cash Prizes</h4>
+                <p>₹1 Lakh+ worth of prizes to be won</p>
+            </div>
+            <div class="tx-card">
+                <div class="tx-icon-box">🎖️</div>
+                <h4>Certificates</h4>
+                <p>Certificates for all participants & winners</p>
+            </div>
+            <div class="tx-card">
+                <div class="tx-icon-box">💼</div>
+                <h4>Internships</h4>
+                <p>Internship opportunities with top companies</p>
+            </div>
+            <div class="tx-card">
+                <div class="tx-icon-box">👁️</div>
+                <h4>Exposure</h4>
+                <p>Showcase your talent to industry experts</p>
+            </div>
+        </div>
+
+        <div class="tx-entry-fee-box">
+            <p class="tx-label">ENTRY FEE</p>
+            <h3 class="tx-price-tag">₹ 99 for individual event & 199 for team event</h3>
+            <div class="tx-offers">
+                
+            </div>
+        </div>
+
+        <div class="tx-action-area">
+            
+            
+        <button class="tx-btn-register"
+onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSeDBKjDcBo0q_JZHIjrzsj-OUmgr6EVzKHHkT-dYAHZj95XHw/viewform?usp=publish-editor'">
+REGISTER YOUR CREW ❯
+</button>
+    </div>
+</section>
+
+
+<section class="contact-section" id="contact">
+
+    <h1 class="main-title">CONTACT US</h1>
+    <p class="subtitle">
+        Have questions about Techxposium 2026?  
+        Feel free to reach out anytime.
+    </p>
+
+    <div class="cards-container">
+
+        <!-- Email -->
+        <div class="card">
+            <div class="icon">📧</div>
+            <h2>Email</h2>
+            <p>technicalclubsce@gmail.com</p>
+        </div>
+
+        <!-- Phone -->
+        <div class="card">
+            <div class="icon">📞</div>
+            <h2>Phone</h2>
+            <p>Rupesh Kumar : 918084092684</p>
+            <p>Yash Raj:      92632 03298</p>
+        </div>
+
+        <!-- Location -->
+        <div class="card">
+            <div class="icon">📍</div>
+            <h2>Location</h2>
+            <p>Supaul College of Engineering</p>
+            <p>Beena Road, Ward No-24</p>
+            <p>Supaul, Bihar 852131</p>
+        </div>
+
+        <!-- Social -->
+        <div class="card">
+            <div class="icon">🔗</div>
+            <h2>Connect With Us</h2>
+            <a href="https://www.linkedin.com/in/technical-club-sce-supaul-476285325?utm_source=share_via&utm_content=profile&utm_medium=member_android">LinkedIn Profile</a>
+            <a href="https://www.instagram.com/techxposium26?utm_source=share_via&utm_content=profile&utm_medium=member_android">Instagram Page</a>
+            
+        </div>
+
+    </div>
+<!-- Modal Popup -->
+<div class="modal" id="eventModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
+  </div>
+
+
+
+<script>
+
+    
+    
+/* Countdown */
+let eventDate=new Date("March 14, 2026 00:00:00").getTime();
+setInterval(()=>{
+let now=new Date().getTime();
+let d=eventDate-now;
+document.getElementById("days").innerHTML=Math.floor(d/(1000*60*60*24));
+document.getElementById("hours").innerHTML=Math.floor((d%(1000*60*60*24))/(1000*60*60));
+document.getElementById("minutes").innerHTML=Math.floor((d%(1000*60*60))/(1000*60));
+document.getElementById("seconds").innerHTML=Math.floor((d%(1000*60))/1000);
+},1000);
+
+/* Particles */
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+let particles=[];
+class Particle{
+constructor(){
+this.x=Math.random()*canvas.width;
+this.y=Math.random()*canvas.height;
+this.speedX=Math.random()*1-0.5;
+this.speedY=Math.random()*1-0.5;
+}
+update(){this.x+=this.speedX;this.y+=this.speedY;}
+draw(){
+ctx.fillStyle="#00ffff";
+ctx.beginPath();
+ctx.arc(this.x,this.y,2,0,Math.PI*2);
+ctx.fill();
+}
+}
+for(let i=0;i<100;i++){particles.push(new Particle());}
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particles.forEach(p=>{p.update();p.draw();});
+for(let a=0;a<particles.length;a++){
+for(let b=a;b<particles.length;b++){
+let dx=particles[a].x-particles[b].x;
+let dy=particles[a].y-particles[b].y;
+let dist=dx*dx+dy*dy;
+if(dist<10000){
+ctx.strokeStyle="rgba(0,255,255,0.08)";
+ctx.beginPath();
+ctx.moveTo(particles[a].x,particles[a].y);
+ctx.lineTo(particles[b].x,particles[b].y);
+ctx.stroke();
+}
+}
+}
+requestAnimationFrame(animate);
+}
+animate();
+
+const eventDetails = [
+"Design and race your high-speed robotic car on a competitive track.",
+"Robots compete in an intense football match arena.",
+"Battle bots compete in a knockout combat competition.",
+"Build a robot that intelligently avoids obstacles.",
+"Autonomous robot that follows a black line path.",
+"High-speed drone racing challenge.",
+"Develop a fully functional website in limited time.",
+"Create innovative mobile apps using modern tools.",
+"Design and simulate circuits using Proteus / LT Spice.",
+"3D modelling competition using SolidWorks & ANSYS.",
+"MATLAB coding and debugging challenge.",
+"Competitive programming contest.",
+"Creative poster design competition.",
+"Technical knowledge quiz competition.",
+"E-Sports multiplayer gaming tournament.",
+"Build smart automation systems & IoT models.",
+"Design and test strongest bridge structures.",
+"Pitch your innovative startup idea to judges."
+];
+
+function openModal(index){
+document.getElementById("eventModal").style.display="flex";
+document.getElementById("modalTitle").innerText =
+document.querySelectorAll(".event-card h3")[index].innerText;
+document.getElementById("modalDesc").innerText = eventDetails[index];
+}
+
+function closeModal(){
+document.getElementById("eventModal").style.display="none";
+}
+
+window.onclick=function(e){
+if(e.target==document.getElementById("eventModal")){
+closeModal();
+}
+}
+
+const scheduleDetails = [
+  "Design and race your high-speed robotic car on a competitive track.",
+  "Develop a fully functional website in limited time.",
+  "Build a robot that intelligently avoids obstacles.",
+  "Creative poster design competition.",
+  "Robots compete in an intense football match arena.",
+  "Create innovative mobile apps using modern tools.",
+  "Competitive programming contest.",
+  "High-speed drone racing challenge.",
+  "Technical knowledge quiz competition.",
+  "3D modelling competition using SolidWorks & ANSYS.",
+  "MATLAB coding and debugging challenge.",
+  "E-Sports multiplayer gaming tournament."
+];
+
+// Open Modal
+function openModal(index){
+  document.getElementById("eventModal").style.display="flex";
+  document.getElementById("modalTitle").innerText = 
+    document.querySelectorAll(".day-card .event-card")[index].innerText;
+  document.getElementById("modalDesc").innerText = scheduleDetails[index];
+}
+
+// Close Modal
+function closeModal(){
+  document.getElementById("eventModal").style.display="none";
+}
+
+// Close modal if clicked outside
+window.onclick = function(e){
+  if(e.target == document.getElementById("eventModal")){
+    closeModal();
+  }
+}
+// Card hover glow effect enhancement
+
+const cards = document.querySelectorAll('.card');
+
+cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const x = e.offsetX;
+        const y = e.offsetY;
+        card.style.background = `
+        radial-gradient(circle at ${x}px ${y}px,
+        rgba(0,255,255,0.3),
+        rgba(255,0,255,0.1))
+        `;
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.style.background = 
+        "linear-gradient(135deg, rgba(0,255,255,0.1), rgba(255,0,255,0.1))";
+    });
+});
+</script>
+
+</body>
+</html>
